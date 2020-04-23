@@ -1,0 +1,10 @@
+COMPANY: title, phoneNumber, email, pointOfContact
+EXECUTES, 1N COMPANY, 1N WORK_TYPE
+WORK_TYPE: title, budget
+
+SENDS, 11 BILL, 0N COMPANY
+BILL: billNumber, description, price, startDate, endDate
+BELONGS, 11 BILL, 0N WORK_TYPE
+
+HAS, 11 BILL, 0N STATUS
+STATUS: title
