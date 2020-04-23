@@ -4,13 +4,14 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|L'identifiant de notre carte|
-| title | VARCHAR | NOT NULL |Le titre de la carte|
-| display_order | INT | NOT NULL |L'ordre de la carte dans la liste|
-|created_at|TIMESTAMP|NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date de création de la carte|
-|updated_at|TIMESTAMP|NULL|La date de la dernière mise à jour de la carte|
-|list|entity|NOT NULL|La liste dans laquelle la carte se trouve|
-|label|entity|NULL|Le(s) label(s) attaché(s) à la carte|
+| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges |
+| title | VARCHAR | NOT NULL | L'intitulé de type de traveaux/charges |
+| budget | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges |
+| created_at | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
+| updated_at | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| companys | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
+| bills | entity | NULL | La liste des factures, liés à ce type de traveux |
+
 
 ## Entreprise executante (`company`)
 
