@@ -58,9 +58,15 @@ class Company
      */
     private $workTypes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="company")
+     */
+    private $bills;
+
     public function __construct()
     {
         $this->workTypes = new ArrayCollection();
+        $this->bills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,6 +181,37 @@ class Company
         if ($this->workTypes->contains($workType)) {
             $this->workTypes->removeElement($workType);
             $workType->removeCompany($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bill[]
+     */
+    public function getBills(): Collection
+    {
+        return $this->bills;
+    }
+
+    public function addBill(Bill $bill): self
+    {
+        if (!$this->bills->contains($bill)) {
+            $this->bills[] = $bill;
+            $bill->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBill(Bill $bill): self
+    {
+        if ($this->bills->contains($bill)) {
+            $this->bills->removeElement($bill);
+            // set the owning side to null (unless already changed)
+            if ($bill->getCompany() === $this) {
+                $bill->setCompany(null);
+            }
         }
 
         return $this;

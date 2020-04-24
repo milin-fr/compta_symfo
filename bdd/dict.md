@@ -8,7 +8,7 @@
 | title | VARCHAR | NOT NULL | L'intitulé de type de traveaux/charges |
 | budgetEuro | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges (euros) |
 | budgetCent | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges (centimes) |
-| companys | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
+| companies | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
 | bills | entity | NULL | La liste des factures, liés à ce type de traveux |
 | createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
 | updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
