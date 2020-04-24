@@ -6,7 +6,8 @@
 |-|-|-|-|
 | id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges |
 | title | VARCHAR | NOT NULL | L'intitulé de type de traveaux/charges |
-| budget | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges |
+| budgetEuro | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges (euros) |
+| budgetCent | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges (centimes) |
 | companys | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
 | bills | entity | NULL | La liste des factures, liés à ce type de traveux |
 | createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
@@ -36,7 +37,8 @@
 | id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de la facture |
 | billNumber | VARCHAR | NULL | Identifiant public du devis / de la facture (si elle en as un) |
 | description | TEXT | NOT NULL | Le descriptif de travail à realiser en relation avec cette facture |
-| price | INT | NOT NULL | Le prix de du devis/facture |
+| priceEuro | INT | NOT NULL | Le prix de du devis/facture (euros) |
+| priceCent | INT | NOT NULL | Le prix de du devis/facture (cents) |
 | startDate | TIMESTAMP |NULL| La date de debut de traveaux (si pertinant) |
 | endDate | TIMESTAMP |NULL | La date de debut de traveaux (si pertinant) |
 | workType | entity | NOT NULL | Le type de traveaux a laquelle est associé cette facture |
