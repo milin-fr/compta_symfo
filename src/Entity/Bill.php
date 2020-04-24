@@ -61,6 +61,12 @@ class Bill
      */
     private $enabled;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\WorkType", inversedBy="bills")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $workType;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +176,18 @@ class Bill
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getWorkType(): ?WorkType
+    {
+        return $this->workType;
+    }
+
+    public function setWorkType(?WorkType $workType): self
+    {
+        $this->workType = $workType;
 
         return $this;
     }

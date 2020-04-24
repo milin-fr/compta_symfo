@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +47,22 @@ class WorkType
      * @ORM\Column(type="boolean")
      */
     private $enabled;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Company", inversedBy="workTypes")
+     */
+    private $companies;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="workType")
+     */
+    private $bills;
+
+    public function __construct()
+    {
+        $this->companies = new ArrayCollection();
+        $this->bills = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +137,63 @@ class WorkType
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Company[]
+     */
+    public function getCompanies(): Collection
+    {
+        return $this->companies;
+    }
+
+    public function addCompany(Company $company): self
+    {
+        if (!$this->companies->contains($company)) {
+            $this->companies[] = $company;
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        if ($this->companies->contains($company)) {
+            $this->companies->removeElement($company);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bill[]
+     */
+    public function getBills(): Collection
+    {
+        return $this->bills;
+    }
+
+    public function addBill(Bill $bill): self
+    {
+        if (!$this->bills->contains($bill)) {
+            $this->bills[] = $bill;
+            $bill->setWorkType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBill(Bill $bill): self
+    {
+        if ($this->bills->contains($bill)) {
+            $this->bills->removeElement($bill);
+            // set the owning side to null (unless already changed)
+            if ($bill->getWorkType() === $this) {
+                $bill->setWorkType(null);
+            }
+        }
 
         return $this;
     }

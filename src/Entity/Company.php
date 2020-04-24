@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,6 +52,16 @@ class Company
      * @ORM\Column(type="boolean")
      */
     private $enabled;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\WorkType", mappedBy="companies")
+     */
+    private $workTypes;
+
+    public function __construct()
+    {
+        $this->workTypes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -136,6 +148,34 @@ class Company
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WorkType[]
+     */
+    public function getWorkTypes(): Collection
+    {
+        return $this->workTypes;
+    }
+
+    public function addWorkType(WorkType $workType): self
+    {
+        if (!$this->workTypes->contains($workType)) {
+            $this->workTypes[] = $workType;
+            $workType->addCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkType(WorkType $workType): self
+    {
+        if ($this->workTypes->contains($workType)) {
+            $this->workTypes->removeElement($workType);
+            $workType->removeCompany($this);
+        }
 
         return $this;
     }
