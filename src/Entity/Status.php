@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class Status
      * @ORM\Column(type="boolean")
      */
     private $enabled;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="status")
+     */
+    private $bills;
+
+    public function __construct()
+    {
+        $this->bills = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +97,37 @@ class Status
     public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bill[]
+     */
+    public function getBills(): Collection
+    {
+        return $this->bills;
+    }
+
+    public function addBill(Bill $bill): self
+    {
+        if (!$this->bills->contains($bill)) {
+            $this->bills[] = $bill;
+            $bill->setStatus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBill(Bill $bill): self
+    {
+        if ($this->bills->contains($bill)) {
+            $this->bills->removeElement($bill);
+            // set the owning side to null (unless already changed)
+            if ($bill->getStatus() === $this) {
+                $bill->setStatus(null);
+            }
+        }
 
         return $this;
     }

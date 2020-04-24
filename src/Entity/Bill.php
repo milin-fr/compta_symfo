@@ -73,6 +73,12 @@ class Bill
      */
     private $company;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="bills")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +212,18 @@ class Bill
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
