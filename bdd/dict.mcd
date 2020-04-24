@@ -4,14 +4,14 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges |
-| title | VARCHAR | NOT NULL | L'intitulé de type de traveaux/charges |
-| budget | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges |
-| companys | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
-| bills | entity | NULL | La liste des factures, liés à ce type de traveux |
-| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
-| enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
+|id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges|
+|title | VARCHAR | NOT NULL | L'intitulé de type de traveaux/charges|
+|budget | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges|
+|companys | entity | NULL | La liste des entreprises, effectuant ce type de traveux|
+|bills | entity | NULL | La liste des factures, liés à ce type de traveux|
+|createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges|
+|updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges|
+|enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin|
 
 
 ## Entreprise executante (`company`)
