@@ -39,6 +39,9 @@
 | price | INT | NOT NULL | Le prix de du devis/facture |
 | startDate | TIMESTAMP |NULL| La date de debut de traveaux (si pertinant) |
 | endDate | TIMESTAMP |NULL | La date de debut de traveaux (si pertinant) |
+| workType | entity | NOT NULL | Le type de traveaux a laquelle est associé cette facture |
+| company | entity | NOT NULL | L'entreprise, à laquelle est associé cette facture |
+| status | entity | NOT NULL | L'etat de la facture (ex : devis, payé, annulé) |
 | createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
 | updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
@@ -47,8 +50,9 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges |
-
-| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de status |
+| title | VARCHAR | NOT NULL | L'intitulé du status de la facture |
+| bills | entity | NULL | La liste des factures, portant ce status |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce status |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce status |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
