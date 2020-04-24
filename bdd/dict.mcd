@@ -9,8 +9,8 @@
 | budget | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges |
 | companys | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
 | bills | entity | NULL | La liste des factures, liés à ce type de traveux |
-| created_at | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updated_at | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
 
 
@@ -18,25 +18,37 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-
-| created_at | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de cette entreprise |
-| updated_at | TIMESTAMP |NULL |La date de la dernière mise à jour de cette entreprise |
+| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de l'entreprise |
+| title | VARCHAR | NOT NULL | L'intitulé de l'entreprise |
+| email | VARCHAR | NULL | L'email de contact de l'entreprise (si elle en as un) |
+| phoneNumber | VARCHAR | NOT NULL | Le numero de telephone de contact de l'entreprise |
+| pointOfContact | VARCHAR | NULL | Le nom du correspondant privilégié au sein de l'entreprise (si elle en as un) |
+| workTypes | entity | NULL | La liste de types de traveaux, que l'entreprise a realisé |
+| bills | entity | NULL | La liste des devis/factures emis par l'entreprise |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de cette entreprise |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de cette entreprise |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
 
 ## Facture (`bill`)
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-
-| created_at | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updated_at | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de la facture |
+| billNumber | VARCHAR | NULL | Identifiant public du devis / de la facture (si elle en as un) |
+| description | TEXT | NOT NULL | Le descriptif de travail à realiser en relation avec cette facture |
+| price | INT | NOT NULL | Le prix de du devis/facture |
+| startDate | TIMESTAMP |NULL| La date de debut de traveaux (si pertinant) |
+| endDate | TIMESTAMP |NULL | La date de debut de traveaux (si pertinant) |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
 
 ## Status de la facture (`status`)
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
+| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges |
 
-| created_at | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updated_at | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
