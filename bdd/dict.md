@@ -1,21 +1,20 @@
 # Dictionnaire de données
 
-## Type de traveaux/charges (`workType`)
+## Type de travaux/charges (`workType`)
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de traveaux/charges |
-| title | VARCHAR | NOT NULL | L'intitulé de type de traveaux/charges |
-| budgetEuro | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges (euros) |
-| budgetCent | INT | NOT NULL | Budget, attribué à ce type de traveaux/charges (centimes) |
-| companies | entity | NULL | La liste des entreprises, effectuant ce type de traveux |
-| bills | entity | NULL | La liste des factures, liés à ce type de traveux |
-| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| id | INT | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | L'identifiant de type de travaux/charges |
+| title | VARCHAR | NOT NULL | L'intitulé de type de travaux/charges |
+| budgetEuro | INT | NOT NULL | Budget, attribué à ce type de travaux/charges (euros) |
+| budgetCent | INT | NOT NULL | Budget, attribué à ce type de travaux/charges (centimes) |
+| companies | entity | NULL | La liste des entreprises, effectuant ce type de travaux |
+| bills | entity | NULL | La liste des factures, liés à ce type de travaux |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de travaux/charges |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de travaux/charges |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
 
-
-## Entreprise executante (`company`)
+## Entreprise exécutante (`company`)
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
@@ -24,7 +23,7 @@
 | email | VARCHAR | NULL | L'email de contact de l'entreprise (si elle en as un) |
 | phoneNumber | VARCHAR | NOT NULL | Le numero de telephone de contact de l'entreprise |
 | pointOfContact | VARCHAR | NULL | Le nom du correspondant privilégié au sein de l'entreprise (si elle en as un) |
-| workTypes | entity | NULL | La liste de types de traveaux, que l'entreprise a realisé |
+| workTypes | entity | NULL | La liste de types de travaux, que l'entreprise a réalisé |
 | bills | entity | NULL | La liste des devis/factures emis par l'entreprise |
 | createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de cette entreprise |
 | updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de cette entreprise |
@@ -38,14 +37,14 @@
 | billNumber | VARCHAR | NULL | Identifiant public du devis / de la facture (si elle en as un) |
 | description | TEXT | NOT NULL | Le descriptif de travail à realiser en relation avec cette facture |
 | priceEuro | INT | NOT NULL | Le prix de du devis/facture (euros) |
-| priceCent | INT | NOT NULL | Le prix de du devis/facture (cents) |
-| startDate | TIMESTAMP |NULL| La date de debut de traveaux (si pertinant) |
-| endDate | TIMESTAMP |NULL | La date de debut de traveaux (si pertinant) |
-| workType | entity | NOT NULL | Le type de traveaux a laquelle est associé cette facture |
+| priceCent | INT | NOT NULL | Le prix de du devis/facture (centimes) |
+| startDate | TIMESTAMP |NULL| La date de début de travaux (si pertinent) |
+| endDate | TIMESTAMP |NULL | La date de début de travaux (si pertinent) |
+| workType | entity | NOT NULL | Le type de travaux à laquelle est associé cette facture |
 | company | entity | NOT NULL | L'entreprise, à laquelle est associé cette facture |
 | status | entity | NOT NULL | L'etat de la facture (ex : devis, payé, annulé) |
-| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de traveaux/charges |
-| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de traveaux/charges |
+| createdAt | TIMESTAMP |NOT NULL, DEFAULT CURRENT_TIMESTAMP|La date d'ajout de ce type de travaux/charges |
+| updatedAt | TIMESTAMP |NULL |La date de la dernière mise à jour de ce type de travaux/charges |
 | enabled | BOOLEAN | NOT NULL, DEFAULT 1 | Une option pour le soft delete en cas de besoin |
 
 ## Status de la facture (`status`)
