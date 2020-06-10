@@ -149,6 +149,7 @@ class Status
     {
         $this->createdAt = new \DateTime();
         $this->enabled = 1;
+        $this->deductable = 1;
     }
 
     /** 
