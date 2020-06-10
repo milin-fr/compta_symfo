@@ -51,7 +51,6 @@ class AppFixtures extends Fixture
         $manager->persist($status);
         $billStatuses[] = $status;
 
-        
         $manager->flush();
     }
 }
