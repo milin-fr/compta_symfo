@@ -238,7 +238,8 @@ class Bill
      */
     public function generateCreatedAt()
     {
-        $this->created_at = new \DateTime();
+        $this->createdAt = new \DateTime();
+        $this->enabled = 1;
     }
 
     /** 
@@ -246,6 +247,6 @@ class Bill
      */
     public function generateUpdatedAt()
     {
-        $this->updated_at = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 }

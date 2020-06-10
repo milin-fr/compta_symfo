@@ -142,7 +142,8 @@ class Status
      */
     public function generateCreatedAt()
     {
-        $this->created_at = new \DateTime();
+        $this->createdAt = new \DateTime();
+        $this->enabled = 1;
     }
 
     /** 
@@ -150,6 +151,6 @@ class Status
      */
     public function generateUpdatedAt()
     {
-        $this->updated_at = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 }
