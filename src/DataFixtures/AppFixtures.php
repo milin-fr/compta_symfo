@@ -35,6 +35,8 @@ class AppFixtures extends Fixture
             $companys[] = $company;
         }
 
+        $billStatusTitle = ["Devis", "Facturé", "Annulé"];
+        $billStatuses = [];
         
         $manager->flush();
     }

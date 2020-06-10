@@ -43,6 +43,11 @@ class Status
      */
     private $bills;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $deductable;
+
     public function __construct()
     {
         $this->bills = new ArrayCollection();
@@ -152,5 +157,17 @@ class Status
     public function generateUpdatedAt()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    public function getDeductable(): ?bool
+    {
+        return $this->deductable;
+    }
+
+    public function setDeductable(?bool $deductable): self
+    {
+        $this->deductable = $deductable;
+
+        return $this;
     }
 }
