@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Company;
+use App\Entity\Status;
 use App\Entity\WorkType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -35,8 +36,21 @@ class AppFixtures extends Fixture
             $companys[] = $company;
         }
 
-        $billStatusTitle = ["Devis", "Facturé", "Annulé"];
+        $billStatusTitles = ["Devis", "Facturé"];
         $billStatuses = [];
+        foreach($billStatusTitles as $title){
+            $status = new Status();
+            $status->setTitle($title);
+            $manager->persist($status);
+            $billStatuses[] = $status;
+        }
+
+        $status = new Status();
+        $status->setTitle("Annulé");
+        $status->setDeductable(0);
+        $manager->persist($status);
+        $billStatuses[] = $status;
+
         
         $manager->flush();
     }
