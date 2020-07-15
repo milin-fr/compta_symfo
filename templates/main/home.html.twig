@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+<div>
+<h1>Companies</h1>
+{% for company in companies %}
+    <h2>{{ company.title }}</h2>
+    <h2>{{ company.sum }}</h2>
+    {% for bill in company.bills %}
+    <div>
+        <span>{{ bill.description }}</span><span> {{ bill.priceEuro }} euros {{ bill.priceCent }} centimes</span>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+</div>
+{% endblock %}
