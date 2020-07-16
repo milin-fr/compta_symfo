@@ -4,16 +4,13 @@
 
 {% block body %}
 <div>
-<h1>Companies</h1>
+<h1>Par entreprise</h1>
 {% for company in companies %}
-    <h2>{{ company.title }}</h2>
-    <h2>{{ company.sum }}</h2>
-    {% for bill in company.bills %}
-    <div>
-        <span>{{ bill.description }}</span><span> {{ bill.priceEuro }} euros {{ bill.priceCent }} centimes</span>
-        </div>
-    {% endfor %}
+    <h2>{{ company.title }} : {{ company.euroSum }} euros {{ "%02d"|format(company.centSum) }} cents</h2>
 {% endfor %}
-
+<h1>Par type de charge</h1>
+{% for workType in workTypes %}
+    <h2>{{ workType.title }} : {{ workType.euroSum }} euros {{ "%02d"|format(workType.centSum) }} cents</h2>
+{% endfor %}
 </div>
 {% endblock %}
