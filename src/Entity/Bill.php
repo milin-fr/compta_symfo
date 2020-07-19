@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BillRepository")
@@ -34,6 +35,11 @@ class Bill
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 99,
+     *      notInRangeMessage = "Chiffre entre 0 et 99",
+     * )
      */
     private $priceCent;
 

@@ -16,8 +16,6 @@ class BillType extends AbstractType
             ->add('description')
             ->add('priceEuro')
             ->add('priceCent')
-            ->add('startDate')
-            ->add('endDate')
             ->add('workType')
             ->add('company')
             ->add('status')
